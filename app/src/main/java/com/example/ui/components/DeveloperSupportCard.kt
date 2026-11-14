@@ -477,97 +477,108 @@ private fun SupportAccountRow(
             .clickable(onClick = onCopyClick)
             .testTag("support_account_${account.id}"),
     ) {
-        Row(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 12.dp, vertical = 10.dp),
-            verticalAlignment = Alignment.CenterVertically,
-            horizontalArrangement = Arrangement.spacedBy(10.dp),
+            verticalArrangement = Arrangement.spacedBy(8.dp),
         ) {
-            Surface(
-                shape = MaterialTheme.shapes.small,
-                color = if (isCopied) {
-                    MaterialTheme.colorScheme.tertiaryContainer
-                } else {
-                    MaterialTheme.colorScheme.secondaryContainer
-                },
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ) {
-                Icon(
-                    imageVector = account.icon,
-                    contentDescription = null,
-                    tint = if (isCopied) {
-                        MaterialTheme.colorScheme.onTertiaryContainer
+                Surface(
+                    shape = MaterialTheme.shapes.small,
+                    color = if (isCopied) {
+                        MaterialTheme.colorScheme.tertiaryContainer
                     } else {
-                        MaterialTheme.colorScheme.onSecondaryContainer
+                        MaterialTheme.colorScheme.secondaryContainer
                     },
-                    modifier = Modifier
-                        .padding(8.dp)
-                        .size(20.dp),
-                )
-            }
+                ) {
+                    Icon(
+                        imageVector = account.icon,
+                        contentDescription = null,
+                        tint = if (isCopied) {
+                            MaterialTheme.colorScheme.onTertiaryContainer
+                        } else {
+                            MaterialTheme.colorScheme.onSecondaryContainer
+                        },
+                        modifier = Modifier
+                            .padding(6.dp)
+                            .size(18.dp),
+                    )
+                }
 
-            Column(
-                modifier = Modifier.weight(1f),
-                verticalArrangement = Arrangement.spacedBy(2.dp),
-            ) {
                 Text(
                     text = account.label,
                     style = MaterialTheme.typography.labelLarge,
+                    fontWeight = FontWeight.Bold,
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
+                    modifier = Modifier.weight(1f),
                 )
+            }
+
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ) {
                 Text(
                     text = account.accountNumber,
                     style = MaterialTheme.typography.titleMedium.copy(
                         fontWeight = FontWeight.Bold,
-                        letterSpacing = 0.6.sp,
+                        letterSpacing = 0.4.sp,
                     ),
                     color = MaterialTheme.colorScheme.onSurface,
+                    maxLines = 1,
+                    modifier = Modifier.weight(1f),
                 )
-            }
 
-            FilledTonalButton(
-                onClick = onCopyClick,
-                modifier = Modifier
-                    .minimumInteractiveComponentSize()
-                    .testTag("copy_${account.id}_button"),
-                shape = MaterialTheme.shapes.small,
-                contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
-                colors = ButtonDefaults.filledTonalButtonColors(
-                    containerColor = if (isCopied) {
-                        MaterialTheme.colorScheme.tertiaryContainer
-                    } else {
-                        MaterialTheme.colorScheme.primaryContainer
-                    },
-                    contentColor = if (isCopied) {
-                        MaterialTheme.colorScheme.onTertiaryContainer
-                    } else {
-                        MaterialTheme.colorScheme.onPrimaryContainer
-                    },
-                ),
-            ) {
-                AnimatedContent(
-                    targetState = isCopied,
-                    label = "copy_state_${account.id}",
-                ) { copied ->
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                    ) {
-                        Icon(
-                            imageVector = if (copied) Icons.Filled.Check else Icons.Filled.ContentCopy,
-                            contentDescription = stringResource(
-                                R.string.support_copy_cd,
-                                account.label,
-                            ),
-                            modifier = Modifier.size(16.dp),
-                        )
-                        Text(
-                            text = stringResource(
-                                if (copied) R.string.support_copied_button else R.string.support_copy_button
-                            ),
-                            style = MaterialTheme.typography.labelLarge,
-                            fontWeight = FontWeight.Bold,
-                        )
+                FilledTonalButton(
+                    onClick = onCopyClick,
+                    modifier = Modifier
+                        .minimumInteractiveComponentSize()
+                        .testTag("copy_${account.id}_button"),
+                    shape = MaterialTheme.shapes.small,
+                    contentPadding = PaddingValues(horizontal = 12.dp, vertical = 8.dp),
+                    colors = ButtonDefaults.filledTonalButtonColors(
+                        containerColor = if (isCopied) {
+                            MaterialTheme.colorScheme.tertiaryContainer
+                        } else {
+                            MaterialTheme.colorScheme.primaryContainer
+                        },
+                        contentColor = if (isCopied) {
+                            MaterialTheme.colorScheme.onTertiaryContainer
+                        } else {
+                            MaterialTheme.colorScheme.onPrimaryContainer
+                        },
+                    ),
+                ) {
+                    AnimatedContent(
+                        targetState = isCopied,
+                        label = "copy_state_${account.id}",
+                    ) { copied ->
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            horizontalArrangement = Arrangement.spacedBy(4.dp),
+                        ) {
+                            Icon(
+                                imageVector = if (copied) Icons.Filled.Check else Icons.Filled.ContentCopy,
+                                contentDescription = stringResource(
+                                    R.string.support_copy_cd,
+                                    account.label,
+                                ),
+                                modifier = Modifier.size(16.dp),
+                            )
+                            Text(
+                                text = stringResource(
+                                    if (copied) R.string.support_copied_button else R.string.support_copy_button
+                                ),
+                                style = MaterialTheme.typography.labelLarge,
+                                fontWeight = FontWeight.Bold,
+                            )
+                        }
                     }
                 }
             }

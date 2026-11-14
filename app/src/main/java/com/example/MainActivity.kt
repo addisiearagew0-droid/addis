@@ -12,9 +12,9 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.MenuBook
+import androidx.compose.material.icons.automirrored.filled.MenuBook
+import androidx.compose.material.icons.automirrored.outlined.MenuBook
 import androidx.compose.material.icons.filled.PhotoCamera
-import androidx.compose.material.icons.outlined.MenuBook
 import androidx.compose.material.icons.outlined.PhotoCamera
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -72,8 +72,8 @@ private val topLevelDestinations = listOf(
     TopLevelDestination(
         route = ROUTE_ROYAL_ARCHIVE,
         labelRes = R.string.nav_royal_archive,
-        selectedIcon = Icons.Filled.MenuBook,
-        unselectedIcon = Icons.Outlined.MenuBook,
+        selectedIcon = Icons.AutoMirrored.Filled.MenuBook,
+        unselectedIcon = Icons.AutoMirrored.Outlined.MenuBook,
         testTag = "nav_royal_archive",
     ),
 )
