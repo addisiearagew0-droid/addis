@@ -1,0 +1,8 @@
+{
+  "name": "Remix የኢትዮጵያ ነገሥታት",
+  "description": "የኢትዮጵያ ነገሥታትን ፎቶ በመምረጥ ዘመነ መንግሥታቸውን፣ ታሪካቸውን እና ዋና ዋና አስተዋጽኦዎቻቸውን የሚያሳይ የአማርኛ ታሪክ መተግበሪያ።",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
