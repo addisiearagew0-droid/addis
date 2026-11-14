@@ -19,13 +19,19 @@ import org.robolectric.annotation.Config
 class KingsViewModelTest {
 
     @Test
-    fun `repository provides all four Ethiopian kings with achievements`() {
+    fun `repository provides all eight Ethiopian monarchs with rich history`() {
         val kings = KingsRepository.allKings
-        assertEquals(4, kings.size)
+        assertEquals(8, kings.size)
         kings.forEach { king ->
             assertTrue(king.fullName.isNotBlank())
             assertTrue(king.reignEra.isNotBlank())
+            assertTrue(king.dynasty.isNotBlank())
+            assertTrue(king.capitalCity.isNotBlank())
             assertTrue(king.biography.isNotBlank())
+            assertTrue(king.reignDetails.isNotBlank())
+            assertTrue(king.legacyAndEnd.isNotBlank())
+            assertTrue(king.famousQuote.isNotBlank())
+            assertTrue(king.timeline.isNotEmpty())
             assertTrue(king.achievements.isNotEmpty())
         }
     }
@@ -33,7 +39,7 @@ class KingsViewModelTest {
     @Test
     fun `picking photo resets confirmed king until user verifies`() {
         val viewModel = KingsViewModel()
-        val tewodros = KingsRepository.allKings.first()
+        val tewodros = KingsRepository.findById("tewodros")!!
 
         viewModel.onSamplePortraitSelected(tewodros)
         assertTrue(viewModel.uiState.value.hasPhoto)
@@ -47,7 +53,7 @@ class KingsViewModelTest {
 
         viewModel.onSelectKingForStory("menelik")
         assertNotNull(viewModel.uiState.value.selectedKing)
-        assertEquals("ዳግማዊ አፄ ምኒልክ", viewModel.uiState.value.selectedKing?.fullName)
+        assertEquals("ዳግማዊ አፄ ምኒልክ (እምዬ ምኒልክ)", viewModel.uiState.value.selectedKing?.fullName)
 
         viewModel.onClearPhoto()
         assertFalse(viewModel.uiState.value.hasPhoto)

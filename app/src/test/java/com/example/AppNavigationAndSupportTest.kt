@@ -3,10 +3,12 @@ package com.example
 import android.content.ClipboardManager
 import android.content.Context
 import androidx.compose.ui.test.assertIsDisplayed
+import androidx.compose.ui.test.hasTestTag
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.test.onNodeWithTag
 import androidx.compose.ui.test.performClick
 import androidx.compose.ui.test.performScrollTo
+import androidx.compose.ui.test.performScrollToNode
 import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
@@ -27,6 +29,7 @@ class AppNavigationAndSupportTest {
         composeRule.onNodeWithTag("king_story_section").performScrollTo().assertIsDisplayed()
 
         composeRule.onNodeWithTag("nav_royal_archive").performClick()
+        composeRule.onNodeWithTag("archive_list").performScrollToNode(hasTestTag("archive_card_tewodros"))
         composeRule.onNodeWithTag("archive_card_tewodros").assertIsDisplayed().performClick()
         composeRule.onNodeWithTag("detail_back_button").assertIsDisplayed().performClick()
         composeRule.onNodeWithTag("archive_card_tewodros").assertIsDisplayed()

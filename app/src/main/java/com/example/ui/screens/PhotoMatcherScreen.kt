@@ -29,6 +29,7 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
@@ -272,15 +273,17 @@ fun PhotoMatcherScreen(
                             color = MaterialTheme.colorScheme.onSurfaceVariant,
                             textAlign = TextAlign.Center,
                         )
-                        Row(
+                        FlowRow(
                             modifier = Modifier.fillMaxWidth(),
-                            horizontalArrangement = Arrangement.SpaceEvenly,
+                            horizontalArrangement = Arrangement.spacedBy(10.dp, Alignment.CenterHorizontally),
+                            verticalArrangement = Arrangement.spacedBy(10.dp),
                         ) {
                             uiState.kings.forEach { king ->
                                 val isCurrentSample =
                                     (uiState.photoSource as? SelectedPhotoSource.ArchiveSample)?.sampleKingId == king.id
                                 Column(
                                     modifier = Modifier
+                                        .width(74.dp)
                                         .clip(MaterialTheme.shapes.small)
                                         .clickable { onSampleSelected(king) }
                                         .minimumInteractiveComponentSize()
@@ -307,13 +310,17 @@ fun PhotoMatcherScreen(
                                             ),
                                     )
                                     Text(
-                                        text = king.shortName.replace("አፄ ", "").replace("ቀዳማዊ ", ""),
+                                        text = king.shortName
+                                            .replace("ንግሥተ ነገሥታት ", "")
+                                            .replace("አፄ ", "")
+                                            .replace("ቀዳማዊ ", ""),
                                         style = MaterialTheme.typography.labelMedium,
                                         color = if (isCurrentSample) {
                                             MaterialTheme.colorScheme.primary
                                         } else {
                                             MaterialTheme.colorScheme.onSurfaceVariant
                                         },
+                                        textAlign = TextAlign.Center,
                                         maxLines = 1,
                                         overflow = TextOverflow.Ellipsis,
                                     )
