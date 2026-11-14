@@ -127,6 +127,6 @@ internal val medievalKings: List<King> = listOf(
             "የባሪያ ንግድን እና በሕዝብ ላይ የሚደርሰውን የወታደር ዘረፋ በሕግ አገዱ።",
             "የአማርኛ ቋንቋ የመንግሥት ጽሑፍና የታሪክ መዝገብ (ዜና መዋዕል) ቋንቋ እንዲሆን አደረጉ።",
         ),
-        portraitResId = R.drawable.img_king_tewodros_1794639974000,
+        portraitResId = R.drawable.img_king_tewodros_hd_1794659212074,
     ),
 )

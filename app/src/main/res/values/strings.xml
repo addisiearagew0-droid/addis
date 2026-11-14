@@ -1,17 +1,12 @@
 <resources>
     <string name="app_name">የኢትዮጵያ ነገሥታት</string>
-    <string name="hero_title">የኢትዮጵያ ነገሥታት ታሪክ</string>
-    <string name="hero_subtitle">የንጉሡን ፎቶ ያስገቡና ሙሉ ታሪካቸውን ይወቁ</string>
-    <string name="nav_photo_matcher">ፎቶ እና ታሪክ</string>
-    <string name="nav_royal_archive">የነገሥታት መዝገብ</string>
-    <string name="btn_pick_photo">የንጉሥ ፎቶ ይምረጡ</string>
-    <string name="btn_change_photo">ፎቶ ቀይር</string>
-    <string name="btn_clear_photo">ፎቶ አጽዳ</string>
-    <string name="btn_use_sample_portrait">ወይም ከማኅደር ናሙና ፎቶ ይሞክሩ</string>
-    <string name="photo_preview_empty_title">የንጉሡ ፎቶ እዚህ ይታያል</string>
-    <string name="photo_preview_empty_subtitle">ከስልክዎ ጋለሪ የንጉሥ ፎቶ ይምረጡ ወይም ከታች ካሉት ነገሥታት አንዱን ይመርምሩ</string>
-    <string name="selector_prompt">ፎቶው የማን ነው? (ለማረጋገጥ ይምረጡ)፦</string>
-    <string name="selector_placeholder">-- ንጉሥ ይምረጡ --</string>
+    <string name="hero_title">የኢትዮጵያ ነገሥታትና መሪዎች ታሪክ</string>
+    <string name="hero_subtitle">የሚፈልጉትን መሪ ፎቶ ይንኩና ሙሉ ታሪካቸውን በጥልቀት ያንብቡ</string>
+    <string name="nav_photo_matcher">ታሪክ እና ፎቶ</string>
+    <string name="nav_royal_archive">የመሪዎች መዝገብ</string>
+    <string name="btn_use_sample_portrait">ከታች ካሉት ነገሥታትና መሪዎች አንዱን ይምረጡ፦</string>
+    <string name="tap_to_zoom_portrait">በትልቁ ለማየት ፎቶውን ይንኩ</string>
+    <string name="close_fullscreen_cd">ዝጋ</string>
     <string name="achievements_heading">ዋና ዋና ታሪካዊ አስተዋጽኦዎች፦</string>
     <string name="biography_heading">የልጅነት፣ የመነሻ እና የሕይወት ታሪክ</string>
     <string name="reign_history_heading">የዘመነ መንግሥት ታሪክ</string>
@@ -22,8 +17,8 @@
     <string name="capital_label">መናገሻ / ዋና ከተማ</string>
     <string name="reign_period_label">ዘመነ መንግሥት</string>
     <string name="birthplace_label">የትውልድ ቦታ / መነሻ</string>
-    <string name="archive_header_title">ታላላቅ የኢትዮጵያ ነገሥታት</string>
-    <string name="archive_header_subtitle">ከ1173 እስከ 1967 ዓ.ም. ኢትዮጵያን የመሩ 8 ታላላቅ ነገሥታት እና ንግሥትን ሙሉ ታሪክ ያንብቡ</string>
+    <string name="archive_header_title">ታላላቅ የኢትዮጵያ ነገሥታትና መሪዎች</string>
+    <string name="archive_header_subtitle">ከ1173 እስከ 2004 ዓ.ም. ኢትዮጵያን የመሩ 10 ታሪካዊ ነገሥታት፣ ንግሥትና መሪዎችን ሙሉ ታሪክ ያንብቡ</string>
     <string name="view_full_history">ሙሉ ታሪክ ይመልከቱ</string>
     <string name="back_button_cd">ወደ ኋላ ተመለስ</string>
     <string name="king_portrait_cd">የንጉሥ ፎቶ</string>

@@ -1,13 +1,8 @@
 package com.example
 
-import android.net.Uri
 import com.example.model.KingsRepository
 import com.example.viewmodel.KingsViewModel
-import com.example.viewmodel.SelectedPhotoSource
 import org.junit.Assert.assertEquals
-import org.junit.Assert.assertFalse
-import org.junit.Assert.assertNotNull
-import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -19,9 +14,9 @@ import org.robolectric.annotation.Config
 class KingsViewModelTest {
 
     @Test
-    fun `repository provides all eight Ethiopian monarchs with rich history`() {
+    fun `repository provides all ten Ethiopian leaders with rich history`() {
         val kings = KingsRepository.allKings
-        assertEquals(8, kings.size)
+        assertEquals(10, kings.size)
         kings.forEach { king ->
             assertTrue(king.fullName.isNotBlank())
             assertTrue(king.reignEra.isNotBlank())
@@ -37,26 +32,16 @@ class KingsViewModelTest {
     }
 
     @Test
-    fun `picking photo resets confirmed king until user verifies`() {
+    fun `selecting king updates ui state for both main and archive screens`() {
         val viewModel = KingsViewModel()
-        val tewodros = KingsRepository.findById("tewodros")!!
+        assertEquals("lalibela", viewModel.uiState.value.selectedKingId)
+        assertEquals("ቅዱስ አፄ ላሊበላ (ገብረ መስቀል)", viewModel.uiState.value.selectedKing.fullName)
 
-        viewModel.onSamplePortraitSelected(tewodros)
-        assertTrue(viewModel.uiState.value.hasPhoto)
-        assertEquals("tewodros", viewModel.uiState.value.selectedKingId)
+        viewModel.onSelectKing("menelik")
+        assertEquals("menelik", viewModel.uiState.value.selectedKingId)
+        assertEquals("ዳግማዊ አፄ ምኒልክ (እምዬ ምኒልክ)", viewModel.uiState.value.selectedKing.fullName)
 
-        val uri = Uri.parse("content://media/picker/123")
-        viewModel.onPhotoPicked(uri)
-        assertTrue(viewModel.uiState.value.hasPhoto)
-        assertTrue(viewModel.uiState.value.photoSource is SelectedPhotoSource.UserGalleryUri)
-        assertNull(viewModel.uiState.value.selectedKingId)
-
-        viewModel.onSelectKingForStory("menelik")
-        assertNotNull(viewModel.uiState.value.selectedKing)
-        assertEquals("ዳግማዊ አፄ ምኒልክ (እምዬ ምኒልክ)", viewModel.uiState.value.selectedKing?.fullName)
-
-        viewModel.onClearPhoto()
-        assertFalse(viewModel.uiState.value.hasPhoto)
-        assertNull(viewModel.uiState.value.selectedKingId)
+        viewModel.onSelectArchiveKing("tewodros")
+        assertEquals("tewodros", viewModel.uiState.value.archiveDetailKing.id)
     }
 }

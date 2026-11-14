@@ -14,8 +14,8 @@ import androidx.compose.foundation.layout.safeDrawing
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.MenuBook
 import androidx.compose.material.icons.automirrored.outlined.MenuBook
-import androidx.compose.material.icons.filled.PhotoCamera
-import androidx.compose.material.icons.outlined.PhotoCamera
+import androidx.compose.material.icons.filled.PhotoLibrary
+import androidx.compose.material.icons.outlined.PhotoLibrary
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
@@ -65,8 +65,8 @@ private val topLevelDestinations = listOf(
     TopLevelDestination(
         route = ROUTE_PHOTO_MATCHER,
         labelRes = R.string.nav_photo_matcher,
-        selectedIcon = Icons.Filled.PhotoCamera,
-        unselectedIcon = Icons.Outlined.PhotoCamera,
+        selectedIcon = Icons.Filled.PhotoLibrary,
+        unselectedIcon = Icons.Outlined.PhotoLibrary,
         testTag = "nav_photo_matcher",
     ),
     TopLevelDestination(
@@ -189,10 +189,7 @@ fun EthiopianKingsApp(
                     composable(ROUTE_PHOTO_MATCHER) {
                         PhotoMatcherScreen(
                             uiState = uiState,
-                            onPhotoPicked = kingsViewModel::onPhotoPicked,
-                            onSampleSelected = kingsViewModel::onSamplePortraitSelected,
-                            onClearPhoto = kingsViewModel::onClearPhoto,
-                            onSelectKing = kingsViewModel::onSelectKingForStory,
+                            onSelectKing = kingsViewModel::onSelectKing,
                         )
                     }
 
@@ -203,10 +200,6 @@ fun EthiopianKingsApp(
                                 navController.navigate("king_detail/${king.id}")
                             },
                             onSelectKingDetailWide = kingsViewModel::onSelectArchiveKing,
-                            onMatchWithPhoto = { king ->
-                                kingsViewModel.onSamplePortraitSelected(king)
-                                navigateToTopLevel(ROUTE_PHOTO_MATCHER)
-                            },
                         )
                     }
 
@@ -219,11 +212,6 @@ fun EthiopianKingsApp(
                         KingDetailScreen(
                             king = king,
                             onBack = { navController.popBackStack() },
-                            onUsePortraitInMatcher = { chosen ->
-                                kingsViewModel.onSamplePortraitSelected(chosen)
-                                navController.popBackStack()
-                                navigateToTopLevel(ROUTE_PHOTO_MATCHER)
-                            },
                         )
                     }
                 }

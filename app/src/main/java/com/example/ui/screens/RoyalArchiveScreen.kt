@@ -23,9 +23,6 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowForward
-import androidx.compose.material.icons.filled.PhotoCamera
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
@@ -55,7 +52,6 @@ fun RoyalArchiveScreen(
     uiState: KingsUiState,
     onOpenKingDetailCompact: (King) -> Unit,
     onSelectKingDetailWide: (String) -> Unit,
-    onMatchWithPhoto: (King) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     BoxWithConstraints(modifier = modifier.fillMaxSize()) {
@@ -114,21 +110,6 @@ fun RoyalArchiveScreen(
                         king = selectedKing,
                         showPortraitThumbnail = true,
                     )
-                    Button(
-                        onClick = { onMatchWithPhoto(selectedKing) },
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .testTag("wide_match_photo_button"),
-                        shape = MaterialTheme.shapes.medium,
-                    ) {
-                        Icon(
-                            imageVector = Icons.Filled.PhotoCamera,
-                            contentDescription = null,
-                            modifier = Modifier.size(18.dp),
-                        )
-                        Spacer(modifier = Modifier.size(8.dp))
-                        Text(stringResource(R.string.match_with_photo))
-                    }
                     DeveloperCreditCard()
                 }
             }

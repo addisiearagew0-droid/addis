@@ -24,8 +24,10 @@ class AppNavigationAndSupportTest {
     val composeRule = createAndroidComposeRule<MainActivity>()
 
     @Test
-    fun samplePortraitSelection_revealsStory_andArchiveNavigationWorks() {
+    fun samplePortraitSelection_revealsStory_zoomWorks_andArchiveNavigationWorks() {
         composeRule.onNodeWithTag("sample_king_menelik").performScrollTo().performClick()
+        composeRule.onNodeWithTag("selected_photo_image").performScrollTo().assertIsDisplayed().performClick()
+        composeRule.onNodeWithTag("close_fullscreen_portrait").assertIsDisplayed().performClick()
         composeRule.onNodeWithTag("king_story_section").performScrollTo().assertIsDisplayed()
 
         composeRule.onNodeWithTag("nav_royal_archive").performClick()
